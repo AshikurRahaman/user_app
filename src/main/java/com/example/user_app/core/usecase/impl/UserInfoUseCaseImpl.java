@@ -143,7 +143,7 @@ public class UserInfoUseCaseImpl implements UserInfoUseCase {
     }
 
     private void checkForChildren(UserInfoDomainModel user) {
-        List<UserInfoDomainModel> children = userPort.getChildrenByParentAddressAndUserType(user.getId(), user.getUserType()).orElse(new ArrayList<>());
+        List<UserInfoDomainModel> children = userPort.getChildrenByParentAddressAndUserType(user.getAddress(), Constants.CHILD_USER_TYPE).orElse(new ArrayList<>());
         if(children.size()>0){
             throw new ForBiddenException("Action Forbidden. Please Delete Associated Children First");
         }
